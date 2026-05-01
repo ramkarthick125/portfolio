@@ -1,11 +1,11 @@
-import { useEffect, useRef, useState, lazy, Suspense } from "react";
-import { motion, AnimatePresence, useScroll, useTransform, useInView } from "framer-motion";
+import { useEffect, useRef, useState} from "react";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
 import {
   Mail, Phone, Download,
   ExternalLink, Code2, Database, Server, Layers, Brain,
-  ChevronDown, Menu, X, Star, Trophy, Zap, Send
+  ChevronDown, Menu, X, Star, Zap, Send
 } from "lucide-react";
 
 const GithubIcon = () => (
@@ -20,13 +20,6 @@ const LinkedinIcon = () => (
   </svg>
 );
 
-const InstagramIcon = () => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-    <circle cx="12" cy="12" r="4"/>
-    <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
-  </svg>
-);
 // ─── GLOBAL STYLES ───────────────────────────────────────────────────────────
 const GlobalStyles = () => (
   <style>{`
@@ -431,7 +424,7 @@ const Hero = () => {
   useEffect(() => {
     const t = setInterval(() => setWordIdx(i => (i + 1) % words.length), 2500);
     return () => clearInterval(t);
-  }, []);
+  }, [words.length]);
 
   return (
     <Section id="hero" style={{ display: "flex", alignItems: "center", paddingTop: 72 }}>
